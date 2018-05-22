@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.hisisuu2;
+package org.modoriti;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author hnori
  */
-@WebServlet(name = "Servletikisuu2", urlPatterns = {"/Servletikisuu2"})
-public class Servletikisuu2 extends HttpServlet {
+@WebServlet(name = "Servletmodoriti", urlPatterns = {"/Servletmodoriti"})
+public class Servletmodoriti extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,33 +29,35 @@ public class Servletikisuu2 extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    void keisan(int num,int n,boolean b, PrintWriter pw) {
-        // 掛け算
-        int kake = num * n;
-        
-        if(b){
-            kake = (kake*kake);
-      
-            
-        }
-        pw.print("<br>");
-        pw.print(kake);
+    boolean myprofile(PrintWriter pw) {
+
+        pw.print("私の名前は広瀬光輝です<br>");
+
+        pw.print("生年月日は1997年7月7日<br>");
+
+        pw.print("趣味はゲームと読書です<br>");
+        return true;
+
     }
-        void keisan(int num,PrintWriter pw) {
-        keisan(5, num,false,pw);
-}
+    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            keisan(2,3,true,out);
-            out.print("<br>");
-            keisan(5,out);
-            
 
-        }
+        myprofile(out);
+        if (myprofile(out)) {
+        out.print("この処理は正しく実行できました");
+    } else {
+        out.print("正しく実行できませんでした");
+    }
+
+        
+        
+    
+}
+ 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
